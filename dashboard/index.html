@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Token Radar — pre-token protocols, ranked</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<header class="top">
+  <div>
+    <h1>Token Radar</h1>
+    <p class="sub">Every protocol in the snapshot that has no token yet, ranked by the implied value of the token it has not launched. No names are special-cased: one formula scores them all.</p>
+  </div>
+  <div class="stats" id="stats"></div>
+</header>
+
+<section class="model" id="model"></section>
+
+<nav class="controls">
+  <input id="q" type="search" placeholder="Search name or slug…" aria-label="Search">
+  <select id="cat" aria-label="Category"><option value="">All categories</option></select>
+  <select id="chain" aria-label="Chain"><option value="">All chains</option></select>
+  <select id="sort" aria-label="Sort">
+    <option value="rank">Sort: rank</option>
+    <option value="tvl">Sort: TVL</option>
+    <option value="growth">Sort: 7-day change</option>
+    <option value="value">Sort: implied value</option>
+  </select>
+  <label class="watch"><input type="checkbox" id="watchOnly"> Watchlist only</label>
+</nav>
+
+<main>
+  <section class="board">
+    <h2 id="boardTitle">The board</h2>
+    <table>
+      <thead><tr><th>#</th><th>Protocol</th><th>Category</th><th>Chains</th><th>TVL</th><th>7d</th><th>Implied value</th></tr></thead>
+      <tbody id="rows"></tbody>
+    </table>
+    <p class="note" id="count"></p>
+  </section>
+  <aside class="detail" id="detail"><p class="hint">Click a row to see its model breakdown and farm plan.</p></aside>
+</main>
+
+<section class="live">
+  <h2>Live tokens, for scale</h2>
+  <p class="sub">These already trade, so the board shows the market's own value, not a model's. They are here so you can judge what a launch is worth.</p>
+  <table>
+    <thead><tr><th>Protocol</th><th>Category</th><th>TVL</th><th>Market cap</th><th>7d</th></tr></thead>
+    <tbody id="liveRows"></tbody>
+  </table>
+</section>
+
+<section class="sandbox">
+  <h2>Model sandbox</h2>
+  <p class="sub">Move a slider and the board re-ranks in front of you, with the same formula the entry was built on. Nothing here is hidden: the model is the entry.</p>
+  <div class="sliders" id="sliders"></div>
+  <p class="note" id="sandboxNote"></p>
+</section>
+
+<footer>
+  <p id="source"></p>
+  <p class="warn">A token that does not exist yet may never exist. This board ranks protocols by the snapshot's figures, not by inside knowledge, and a farm plan is work you do at your own cost. Never pay to claim anything.</p>
+</footer>
+<script src="../data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
